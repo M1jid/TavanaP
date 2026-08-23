@@ -1,0 +1,13 @@
+playwright==1.44.0
+kafka-python==2.0.2
+elasticsearch==8.13.0
+jdatetime==4.1.1
+confluent-kafka==2.11.0
+watchdog==6.0.0
+httpx==0.28.1
+fastapi==0.116.1
+requests==2.32.4
+khayyam==3.0.17
+python-dateutil
+pytz 
+jdatetime==4.1.1

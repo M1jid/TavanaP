@@ -1,0 +1,13 @@
+{
+  "size": 100,
+  "track_total_hits": true,
+  "query": {
+    "terms": {
+      "username": [
+        {% for username in usernames %}
+          "{{ username }}"{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  }
+}

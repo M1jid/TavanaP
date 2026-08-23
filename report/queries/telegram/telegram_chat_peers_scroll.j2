@@ -1,0 +1,15 @@
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "sources": {
+      "composite": {
+        "size": {{size}},
+        "sources": [
+          { "peer": { "terms": { "field": "PEER_ID" } } },
+          { "reciver": { "terms": { "field": "ADMIN_PEER_ID" } } }
+        ]
+      }
+    }
+  }
+}

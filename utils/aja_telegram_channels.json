@@ -1,0 +1,827 @@
+{
+    "https://t.me/aja_media": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/Aja_Markazi": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان","تهران","قم","مرکزی","البرز"]
+    },
+    "https://t.me/Aja_JonobeGharb": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["لرستان","خوزستان","کهگیلویه و بویراحمد"]
+    },
+    "https://t.me/Aja_shargh": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان جنوبی","یزد","سمنان"]
+    },
+    "https://t.me/Aja_jonob": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["بوشهر","فارس","چهارمحال و بختیاری"]
+    },
+    "https://t.me/Aja_ShomaleGharb": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["آذربایجان شرقی","آذربایجان غربی","اردبیل","زنجان"]
+    },
+    "https://t.me/Aja_shomal": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["گیلان","مازندران","گلستان","قزوین"]
+    },
+    "https://t.me/Aja_ShomaleSharghb": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان رضوی","خراسان شمالی"]
+    },
+    "https://t.me/Aja_JonobeShargh": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کرمان","هرمزگان","سیستان و بلوچستان"]
+    },
+    "https://t.me/Aja_Gharb": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کرمانشاه","کردستان","همدان","ایلام"]
+    },
+    "https://t.me/AI_Studies": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/Dafoosmedia": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/avandcartaja": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/seghal_aja": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/Artesh_mardomi": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123", 
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان"]
+    },
+    "https://t.me/Maeishati_News": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/family_artesh": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان"]
+    },
+    "https://t.me/artesh_v_mardom": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کرمان"]
+    },
+    "https://t.me/KDnews_ir": {
+        "tag": "عقیدتی سیاسی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان رضوی"]
+    },
+    "https://t.me/hamian_nezaja": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123", 
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/Zolfagharnezaja": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["آذربایجان شرقی"]
+    },
+    "https://t.me/hekmatkart_etkaa": {
+        "tag": "آجا",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/iranzamin_news": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["بوشهر"]
+    },
+    "https://t.me/Jangafzar_Mohemat": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["زنجان"]
+    },
+    "https://t.me/padmedia": {
+        "tag": "نیروی پدافند",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["همدان"]
+    },
+    "https://t.me/moojmedia": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["سیستان و بلوچستان"]
+    },
+    "https://t.me/Arteshyaran_Vatan": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/AFmedia99": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["لرستان"]
+    },
+    "https://t.me/Bazneshasteh_News": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان"]
+    },
+    "https://t.me/baarout": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان جنوبی"]
+    },
+    "https://t.me/militaryjustic": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان جنوبی"]
+    },
+    "https://t.me/modernwarguns": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان جنوبی"]
+    },
+    "https://t.me/resanejat": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["سمنان"]
+    },
+    "https://t.me/C5I2SR": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["مازندران"]
+    },
+    "https://t.me/gun_war2030": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان جنوبی"]
+    },
+    "https://t.me/mob_comp_news": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["آذربایجان غربی"]
+    },
+    "https://t.me/world_of_acknowledge": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["گیلان"]
+    },
+    "https://t.me/tanz_sarbazi": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کردستان"]
+    },
+    "https://t.me/ayande_nama": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["سیستان و بلوچستان"]
+    },
+    "https://t.me/white_Haack": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خوزستان"]
+    },
+    "https://t.me/Iranian_heeroo": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خوزستان"]
+    },
+    "https://t.me/technology_war": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان"]
+    },
+    "https://t.me/child_psycholgy": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["خراسان رضوی"]
+    },
+    "https://t.me/paaffang": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کرمانشاه"]
+    },
+    "https://t.me/Strategicommand": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["آذربایجان شرقی"]
+    },
+    "https://t.me/Nezaja_Iran": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/nedajamedia1": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["مازندران"]
+    },
+    "https://t.me/jangnarmm1": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["هرمزگان"]
+    },
+    "https://t.me/cafe_malavan": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["گیلان"]
+    },
+    "https://t.me/jahad_org": {
+        "tag": "نیروی پدافند",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["بوشهر"]
+    },
+    "https://t.me/cafe_moj_anzali": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["گیلان"]
+    },
+    "https://t.me/Antarnational": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["کرمانشاه"]
+    },
+    "https://t.me/Flyingmedia": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"]
+    },
+    "https://t.me/hottownnews8": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["قزوین"]
+    },
+    "https://t.me/iranairforcefans": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": {
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["همدان"]
+    }
+}

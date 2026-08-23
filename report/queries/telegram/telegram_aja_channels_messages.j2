@@ -1,0 +1,88 @@
+{
+  "size": "{{size}}",
+  "from": "{{page}}",
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {% for url in urls %}
+              { "prefix": { "PUBLIC_URL.keyword": "{{ url }}/" } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ],
+            "minimum_should_match": 1
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "VIEWS_COUNT": {
+        "order": "desc"
+      }
+    }
+  ],
+  "aggs": {
+    "history": {
+      "date_histogram": {
+        "field": "DATE",
+        "calendar_interval": "day"
+      },
+      "aggs": {
+        "REACTIONS": {
+          "terms": {
+            "field": "REACTIONS.emoji.keyword",
+            "size": 20
+          }
+        }
+      }
+    },
+    "sentiment": {
+      "terms": {
+        "field": "SENTIMENT.keyword",
+        "size": 3
+      }
+    },
+    "sense": {
+      "terms": {
+        "field": "SENSE.keyword",
+        "size": 10
+      }
+    },
+    "reactions":  { "sum": { "field": "REACTIONS_COUNT" } },
+    "comments":   { "sum": { "field": "REPLIES_COUNT" } },
+    "forwards":   { "sum": { "field": "FORWARDS_COUNT" } },
+    "views":      { "sum": { "field": "VIEWS_COUNT" } },
+    "reactionsBreakdown": {
+      "terms": {
+        "field": "REACTIONS.emoji.keyword",
+        "size": 20
+      }
+    },
+    "media_types": {
+      "terms": {
+        "field": "MEDIA.keyword",
+        "size": 10,
+        "missing": "TEXT_ONLY"
+      }
+    },
+    "hours": {
+      "terms": {
+        "script": { "source": "doc['DATE'].value.getHour()" },
+        "size": 24,
+        "order": { "_key": "asc" }
+      }
+    }
+  }
+}

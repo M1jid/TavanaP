@@ -1,0 +1,17 @@
+services:
+
+  report:
+    build: .
+    container_name: report
+    volumes:
+      - ../.env:/code/.env
+      - ../utils:/code/utils
+    image: report
+    ports:
+      - "9999:8000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

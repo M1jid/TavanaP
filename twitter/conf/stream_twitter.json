@@ -1,0 +1,8 @@
+[
+        {
+                "TWITTER_MESSAGES": "CREATE STREAM TWITTER_MESSAGES (channel_username STRING, username STRING, url STRING KEY, sentiment STRING, date STRING, message STRING, likes BIGINT, replies BIGINT, retweets BIGINT, views BIGINT, lang STRING, commented_id STRING, )  WITH (KAFKA_TOPIC= 'twitter-messages', VALUE_FORMAT= 'JSON');"
+        },
+        {
+                "TWITTER_CHANNELS": "CREATE STREAM TWITTER_CHANNELS (image STRING, username STRING, url STRING KEY) WITH (KAFKA_TOPIC= 'twitter-channels', VALUE_FORMAT= 'JSON');"
+        }
+]

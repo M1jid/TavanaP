@@ -1,0 +1,53 @@
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        },
+        {
+          "match": {
+            "PEER_TYPE": "CHANNEL"
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "channels_by_comments": {
+      "terms": {
+        "field": "PEER_ID",
+        "size": 30,
+        "order": {
+          "comments": "desc"
+        }
+      },
+      "aggs": {
+        "comments": {
+          "sum": {
+            "field": "REPLIES_COUNT"
+          }
+        },
+        "top_channels": {
+          "top_hits": {
+            "size": 1,
+            "_source": {
+              "includes": [
+                "PEER_ID",
+                "PUBLIC_URL",
+                "MESSAGE"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

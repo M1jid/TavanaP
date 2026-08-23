@@ -1,0 +1,115 @@
+[
+    {
+        "message": {
+            "rss-messages3": {
+                "settings": {
+                    "number_of_shards": 3,
+                    "number_of_replicas": 2
+                },
+                "mappings": {
+                    "properties": {
+                        "channel_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sentiment": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "date": {
+                            "type": "date",
+                            "format": "strict_date_optional_time||epoch_millis"
+                        },
+                        "title": {
+                            "type": "text"
+                        },
+                        "summary": {
+                            "type": "text"
+                        },
+                        "link": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "author": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "tags": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "image": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                }            
+            }
+        }
+    },
+    {
+        "channel": {
+            "rss-channels": {
+                "settings": {
+                    "number_of_shards": 3,
+                    "number_of_replicas": 2
+                },
+                "mappings": {
+                    "properties": {
+                        "channel_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "image": {
+                            "type": "binary"
+                        },
+                        "rss": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "link": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

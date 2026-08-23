@@ -1,0 +1,121 @@
+{
+    "size": "{{ size }}",
+    "from": "{{ page }}",
+    "track_total_hits": "true",
+    "sort": [
+        {"FORWARDS_COUNT": {"order": "desc"}},
+        {"VIEWS_COUNT": {"order": "desc"}},
+        {"REACTIONS_COUNT": {"order": "desc"}},
+        {"REPLIES_COUNT": {"order": "desc"}}
+    ],
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "match_phrase": {
+                        "TYPE": "CHANNELPOST"
+                    }
+                },
+                {
+                    "bool": {
+                        "should": [
+                            {%- set non_empty_conditions = [] -%}
+                            {%- for condition in conditions -%}
+                                {%- if condition['bool'].get('must') or condition['bool'].get('should') or condition['bool'].get('must_not') -%}
+                                    {%- set _ = non_empty_conditions.append(condition) -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                            {{ non_empty_conditions | tojson | safe }}
+                        ]
+                    }
+                },
+                {
+                    "bool": {
+                        "filter": [
+                            {
+                                "script": {
+                                    "script": {
+                                        "source": "doc['MESSAGE.keyword'].size() != 0 && doc['MESSAGE.keyword'].value.length() > 1",
+                                        "lang": "painless"
+                                    }
+                                }
+                            },
+                            {
+                                "range": {
+                                    "DATE": {
+                                        "gte": "{{ start_date }}",
+                                        "lte": "{{ end_date }}"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "aggs": {
+        "REACTIONS_COUNT": {
+            "sum": {
+                "field": "REACTIONS_COUNT"
+            }
+        },
+        "FORWARDS_COUNT": {
+            "sum": {
+                "field": "FORWARDS_COUNT"
+            }
+        },
+        "REPLIES_COUNT": {
+            "sum": {
+                "field": "REPLIES_COUNT"
+            }
+        },
+        "VIEWS_COUNT": {
+            "sum": {
+                "field": "VIEWS_COUNT"
+            }
+        },
+        "HISTORY": {
+            "date_histogram": {
+                "field": "DATE",
+                "calendar_interval": "day"
+            },"aggs": {"REACTIONS": {"terms": {"field": "REACTIONS.emoji.keyword","size": 20}}}
+        },
+        "TAGS": {
+            "terms": {
+                "field": "TAGS.keyword",
+                "size": 9
+            }
+        },
+        "SENTIMENT": {
+            "terms": {
+                "field": "SENTIMENT.keyword",
+                "size": 4
+            }
+        },
+        "SENSE": {
+            "terms": {
+                "field": "SENSE.keyword",
+                "size": 12
+            }
+        },
+        "MOST_CHANNELS": {
+            "terms": {
+                "field": "PEER_ID",
+                "size": 10
+            }
+        },
+        "TOP_POSTS": {
+            "top_hits": {
+                "sort": [
+                    {"FORWARDS_COUNT": {"order": "desc"}},
+                    {"VIEWS_COUNT": {"order": "desc"}},
+                    {"REACTIONS_COUNT": {"order": "desc"}},
+                    {"REPLIES_COUNT": {"order": "desc"}}
+                ],
+                "size": 20
+            }
+        },
+        "reactionsBreakdown": {"terms": {"field": "REACTIONS.emoji.keyword", "size": 20}}
+    }
+}

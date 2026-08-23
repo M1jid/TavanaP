@@ -1,0 +1,8 @@
+[
+        {
+                "RSS_MESSAGES3": "CREATE STREAM RSS_MESSAGES3(fetch_time BIGINT, sentiment STRING, channel_name STRING, date STRING, summary STRING, id STRING KEY, link STRING, title STRING, author STRING, tags STRING, image STRING) WITH ( KAFKA_TOPIC= 'rss-messages3', VALUE_FORMAT= 'JSON');"
+        },
+        {
+                "RSS_CHANNELS": "CREATE STREAM RSS_CHANNELS(image STRING, rss STRING KEY, link STRING, channel_name STRING, title STRING) WITH ( KAFKA_TOPIC= 'rss-channels', VALUE_FORMAT= 'JSON');"
+        }
+]

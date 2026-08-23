@@ -1,0 +1,7 @@
+playwright==1.44.0
+kafka-python==2.0.2
+elasticsearch==8.13.0
+jdatetime==4.1.1
+boto3==1.40.25
+python-dotenv==1.1.1
+requests[socks]

@@ -1,0 +1,62 @@
+services:
+  scraper1:
+    build:
+      context: ./scraper1
+    container_name: scraper1
+    restart: always
+    shm_size: '1gb'
+
+    volumes:
+      - ./shared:/app/shared
+
+  scraper2:
+    build:
+      context: ./scraper2
+    container_name: scraper2
+    restart: always
+    shm_size: '1gb'
+    environment:
+      - http_proxy=http://192.168.10.50:10809
+      - https_proxy=http://192.168.10.50:10809
+      - all_proxy=http://192.168.10.50:10809
+    volumes:
+      - ./shared:/app/shared
+
+  scraper3:
+    build:
+      context: ./scraper3
+    container_name: scraper3
+    restart: always
+    shm_size: '1gb'
+    environment:
+      - http_proxy=http://192.168.10.50:10809
+      - https_proxy=http://192.168.10.50:10809
+      - all_proxy=http://192.168.10.50:10809
+    volumes:
+      - ./shared:/app/shared
+
+  scraper4:
+    build:
+      context: ./scraper4
+    container_name: scraper4
+    restart: always
+    shm_size: '1gb'
+    volumes:
+      - ./shared:/app/shared
+  scraper6:
+    build:
+      context: ./scraper6
+    container_name: scraper6
+    restart: always
+    shm_size: '1gb'
+    volumes:
+      - ./shared:/app/shared
+  instagram-nats:
+    build:
+      context: ./instagram-nats
+    container_name: instagram-nats
+    volumes:
+      - ./instagram-nats/seen_usernames.json:/app/seen_usernames.json
+    command: ["python", "pull-username.py"]
+
+

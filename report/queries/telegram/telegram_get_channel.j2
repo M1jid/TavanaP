@@ -1,0 +1,51 @@
+{
+  "size": 0,
+  "query": {
+    "range": {
+      "DATE": {
+        "gte": "now-30d",
+        "lte": "now"
+      }
+    }
+  },
+  "aggs": {
+    "top_forwarded_channels": {
+      "terms": {
+        "field": "FWD_PEER_ID",
+        "size": 15,
+        "order": {
+          "total_views": "desc"
+        }
+      },
+      "aggs": {
+        "total_views": {
+          "sum": {
+            "field": "VIEWS_COUNT"
+          }
+        },
+        "forwarding_channels": {
+          "terms": {
+            "field": "PEER_ID",
+            "order": {
+              "_count": "desc"
+            }
+          },
+          "aggs": {
+            "channel_sample": {
+              "top_hits": {
+                "_source": ["PEER_ID", "FWD_PEER_ID", "PUBLIC_URL"],
+                "size":1
+              }
+            }
+          }
+        },
+        "channel_info": {
+          "top_hits": {
+            "_source": ["FWD_PEER_ID", "PUBLIC_URL"],
+            "size":1
+          }
+        }
+      }
+    }
+  }
+}

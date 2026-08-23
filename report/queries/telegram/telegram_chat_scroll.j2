@@ -1,0 +1,36 @@
+{
+  "size": {{size}},
+  "from": {{page}},
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "ADMIN_PEER_ID": {
+              "value": "{{reciver}}"
+            }
+          }
+        },
+        {
+          "term": {
+            "PEER_ID": {
+              "value": "{{peer}}"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "DATE": {
+        "order": "{{order}}"
+      }
+    },
+    {
+      "MESSAGE_ID": {
+        "order": "{{order}}"
+      }
+    }
+  ]
+}

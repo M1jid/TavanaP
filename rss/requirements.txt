@@ -1,0 +1,14 @@
+elastic-transport==8.17.1
+elasticsearch[async]
+confluent_kafka
+fastapi[standard]
+uvicorn
+requests[socks]
+khayyam
+bs4
+dotenv
+python-dateutil
+redis
+tenacity
+feedparser
+pytz

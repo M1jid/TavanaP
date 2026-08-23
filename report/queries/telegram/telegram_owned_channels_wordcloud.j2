@@ -1,0 +1,58 @@
+{
+    "size": 1000,
+    "track_total_hits": true,
+    "_source": ["CLEANED_MESSAGE"],
+    "sort": [
+        {"DATE": {"order": "asc"}},
+        {"VIEWS_COUNT": {"order": "desc"}},
+        {"REACTIONS_COUNT": {"order": "desc"}},
+        {"REPLIES_COUNT": {"order": "desc"}},
+        {"FORWARDS_COUNT": {"order": "desc"}}
+    ],
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "match_phrase": {
+                        "TYPE": "CHANNELPOST"
+                    }
+                },
+                {
+                    "bool": {
+                        "should": [
+                            {%- set non_empty_conditions = [] -%}
+                            {%- for condition in conditions -%}
+                                {%- if condition['bool'].get('must') or condition['bool'].get('should') or condition['bool'].get('must_not') -%}
+                                    {%- set _ = non_empty_conditions.append(condition) -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                            {{ non_empty_conditions | tojson | safe }}
+                        ]
+                    }
+                },
+                {
+                    "bool": {
+                        "filter": [
+                            {
+                                "script": {
+                                    "script": {
+                                        "source": "doc['MESSAGE.keyword'].size() != 0 && doc['MESSAGE.keyword'].value.length() > 1",
+                                        "lang": "painless"
+                                    }
+                                }
+                            },
+                            {
+                                "range": {
+                                    "DATE": {
+                                        "gte": "{{ start_date }}",
+                                        "lte": "{{ end_date }}"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

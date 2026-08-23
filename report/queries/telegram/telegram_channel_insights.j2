@@ -1,0 +1,41 @@
+{
+    "size": 0,
+    "track_total_hits": true,
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "match_phrase": {
+              "MESSAGE": "{{search_text}}"
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "term": {
+              "SENTIMENT.keyword": "non_processed"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "channels": {
+        "terms": {
+          "field": "PEER_ID",
+          "size": "{{size}}"
+        },
+        "aggs": {
+          "dominant_sentiment": {
+            "terms": {
+              "field": "SENTIMENT.keyword",
+              "size": 1,
+              "order": {
+                "_count": "desc"
+              }
+            }
+          }
+        }
+      }
+    }
+  }

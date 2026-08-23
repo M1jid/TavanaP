@@ -1,0 +1,238 @@
+variables:
+  REPORT_IMAGE_NAME: registry.example.com/report
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_TLS_CERTDIR: ""   # required to disable TLS
+
+# Branch-specific variables
+.report_variables_main: &report_variables_main
+  REPORT_IMAGE_TAG: $CI_COMMIT_REF_SLUG
+  REPORT_IMAGE_FULL_NAME: $REPORT_IMAGE_NAME:$REPORT_IMAGE_TAG
+  CONTAINER_NAME: report
+  CONTAINER_PORT: 8000
+  HOST_PORT: 8000
+
+.report_variables_develop: &report_variables_develop
+  REPORT_IMAGE_TAG: develop-$CI_COMMIT_REF_SLUG
+  REPORT_IMAGE_FULL_NAME: $REPORT_IMAGE_NAME:$REPORT_IMAGE_TAG
+  CONTAINER_NAME: report_test
+  CONTAINER_PORT: 8000
+  HOST_PORT: 8001
+
+stages:
+  - build
+  - deploy
+  - review
+
+
+####################################################### Branch main #######################################################
+# Build job for main branch
+build_image_report_main:
+  stage: build
+  image: registry.example.com/docker-dind:latest
+  services:
+    - name: docker:dind
+      alias: docker
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+    <<: *report_variables_main
+  timeout: 30m
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+  before_script:
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASS" registry.example.com
+  script:
+    - echo "Building report image for main branch..."
+    - cat "$TAVANA_ENVIRENMENT_FILE" > .env
+    - chmod 644 .env
+    - chmod 400 $API_DEPLOYMENT_SERVER_SSH_KEY
+    - scp -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no -r report utils .env $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST:/tmp/report-deploy-src
+    - ssh -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST "
+        set -e &&
+        docker stop $CONTAINER_NAME || true &&
+        docker rm $CONTAINER_NAME || true &&
+        docker rmi $REPORT_IMAGE_FULL_NAME || true &&
+        cd /tmp/report-deploy-src &&
+        docker build -t $REPORT_IMAGE_FULL_NAME -f report/Dockerfile . &&
+        docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT '$REPORT_IMAGE_FULL_NAME' &&
+        echo 'Deployment completed successfully for main branch'"
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://$API_DEPLOYMENT_SERVER_HOST:$HOST_PORT/docs
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main"
+      changes:
+        - report/*
+        - report/app/*
+        - report/auth/*
+        - report/docs/*
+        - report/docs/descriptions/*
+        - report/docs/platfrom/telegram/*
+        - report/docs/user_channels/*
+        - report/keywords/**/*
+        - report/queries/*
+        - report/queries/**/*
+        - report/routers/*
+        - report/routers/**/*
+        - report/routers/action_users/**/*
+        - report/schemas/*
+        - report/schemas/**/*
+        - report/services/*
+        - report/services/**/*
+        - utils/*
+        - .gitlab-ci.yml
+
+####################################################### Branch develop #######################################################
+
+# Build and Deploy job for develop branch
+release_develop_report:
+  stage: build
+  image: registry.example.com/docker-dind:latest
+  services:
+    - name: docker:dind
+      alias: docker
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+    <<: *report_variables_develop
+  timeout: 30m
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+  before_script:
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASS" registry.example.com
+  script:
+    - echo "Building report image for develop branch..."
+    - cat "$TAVANA_ENVIRENMENT_FILE" > .env
+    - chmod 644 .env
+    - chmod 400 $API_DEPLOYMENT_SERVER_SSH_KEY
+    - scp -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no -r report utils .env $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST:/tmp/report-review-src
+    - ssh -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST "
+        set -e &&
+        docker stop $CONTAINER_NAME || true &&
+        docker rm $CONTAINER_NAME || true &&
+        docker rmi $REPORT_IMAGE_FULL_NAME || true &&
+        cd /tmp/report-review-src &&
+        docker build -t $REPORT_IMAGE_FULL_NAME -f report/Dockerfile . &&
+        docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT '$REPORT_IMAGE_FULL_NAME' &&
+        echo 'Deployment completed successfully for develop branch'"
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://$API_DEPLOYMENT_SERVER_HOST:$HOST_PORT/docs
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - report/*
+        - report/app/*
+        - report/auth/*
+        - report/docs/*
+        - report/docs/descriptions/*
+        - report/docs/platfrom/telegram/*
+        - report/docs/user_channels/*
+        - report/keywords/**/*
+        - report/queries/*
+        - report/queries/**/*
+        - report/routers/*
+        - report/routers/**/*
+        - report/routers/action_users/**/*
+        - report/schemas/*
+        - report/schemas/**/*
+        - report/services/*
+        - report/services/**/*
+        - utils/*
+        - .gitlab-ci.yml
+
+####################################################### Other branches #######################################################
+
+# Build & deploy job for other branches
+release_review_report:
+  stage: build
+  image: registry.example.com/docker-dind:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+    IMAGE_TAG: review-$CI_COMMIT_REF_SLUG
+    IMAGE_FILE: report_$CI_COMMIT_REF_SLUG.tar
+    CONTAINER_NAME: report_${CI_COMMIT_REF_SLUG}
+    CONTAINER_PORT: 8000
+  before_script:
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASS" registry.example.com
+  script:
+    - echo "Building report image for develop branch..."
+    - cat "$TAVANA_ENVIRENMENT_FILE" > .env
+    - chmod 644 .env
+    - chmod 400 $API_DEPLOYMENT_SERVER_SSH_KEY
+    - scp -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no -r report utils .env $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST:/tmp/report-review-src
+    - ssh -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST "
+        set -e &&
+        docker stop $CONTAINER_NAME || true &&
+        docker rm $CONTAINER_NAME || true &&
+        docker rmi $IMAGE_TAG || true &&
+        cd /tmp/report-review-src &&
+        docker build -t $IMAGE_TAG -f report/Dockerfile . &&
+        docker run -d --name $CONTAINER_NAME -p $CONTAINER_PORT $IMAGE_TAG &&
+        HOST_PORT=\$(docker port $CONTAINER_NAME $CONTAINER_PORT | cut -d':' -f2) &&
+        echo \$HOST_PORT > /tmp/host_port.txt &&
+        rm -rf /tmp/report-review-src &&
+        echo \$HOST_PORT
+      " > ssh_output.txt
+    - HOST_PORT=$(tail -n 1 ssh_output.txt)
+    - echo "HOST_PORT=$HOST_PORT" >> variables.env
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://$API_DEPLOYMENT_SERVER_HOST:$HOST_PORT/docs
+    on_stop: stop_review_report
+  artifacts:
+    reports:
+      dotenv: variables.env
+  rules:
+    - if: $CI_COMMIT_REF_NAME != "develop" && $CI_COMMIT_REF_NAME != "main"
+      changes:
+        - report/*
+        - report/app/*
+        - report/auth/*
+        - report/docs/*
+        - report/docs/descriptions/*
+        - report/docs/platfrom/telegram/*
+        - report/docs/user_channels/*
+        - report/keywords/**/*
+        - report/queries/*
+        - report/queries/**/*
+        - report/routers/*
+        - report/routers/**/*
+        - report/routers/action_users/**/*
+        - report/schemas/*
+        - report/schemas/**/*
+        - report/services/*
+        - report/services/**/*
+        - utils/*
+        - .gitlab-ci.yml
+
+# Stop Review App
+stop_review_report:
+  stage: review
+  variables:
+    IMAGE_TAG: review-$CI_COMMIT_REF_SLUG
+    CONTAINER_NAME: report_${CI_COMMIT_REF_SLUG}
+    IMAGE_FILE: report_$CI_COMMIT_REF_SLUG.tar.gz
+  script:
+    - chmod 400 $API_DEPLOYMENT_SERVER_SSH_KEY
+    - ssh -i $API_DEPLOYMENT_SERVER_SSH_KEY -o StrictHostKeyChecking=no $API_DEPLOYMENT_SERVER_USER@$API_DEPLOYMENT_SERVER_HOST "
+        docker stop $CONTAINER_NAME || true &&
+        docker rm $CONTAINER_NAME || true &&
+        docker rmi $IMAGE_TAG || true &&
+        rm -f /tmp/$IMAGE_FILE || true
+      "
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    action: stop
+  rules:
+    - if: $CI_COMMIT_REF_NAME != "develop" && $CI_COMMIT_REF_NAME != "main"
+      when: manual

@@ -1,0 +1,19 @@
+services:
+  twitter:
+    build: .
+    image: twitter
+    # restart: unless-stopped
+    environment:
+      - MODE=PRODUCTION
+    volumes:
+      - ../.env:/code/.env
+      - ../utils:/code/utils
+      - ../proxy:/code/proxy
+    networks:
+      - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,31 @@
+{
+  "track_total_hits": true,
+  "size": 1000,
+  "_source": ["CLEANED_MESSAGE"],
+  "query": {
+    "bool": {
+      "must": [
+        { "match_phrase": { "CLEANED_MESSAGE": "{{ search_text }}" } },
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{ start_date }}",
+              "lte": "{{ end_date }}"
+            }
+          }
+        }
+        {%- if selected_channels and selected_channels|length > 0 %}
+        ,
+        {"terms": {"PEER_ID": {{ selected_channels }} }}
+        {%- endif %}
+      ]
+    }
+  },
+  "sort": [
+    {"DATE": {"order": "asc"}},
+    {"VIEWS_COUNT": {"order": "desc"}},
+    {"REACTIONS_COUNT": {"order": "desc"}},
+    {"REPLIES_COUNT": {"order": "desc"}},
+    {"FORWARDS_COUNT": {"order": "desc"}}
+  ]
+}

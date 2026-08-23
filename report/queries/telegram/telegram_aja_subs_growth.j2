@@ -1,0 +1,12 @@
+{
+  "query": {
+    "terms": {
+      "URL.keyword": [
+        {% for url in urls %}
+        "{{ url }}"{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  },
+  "_source": ["URL","FOLLOWERS"]
+}

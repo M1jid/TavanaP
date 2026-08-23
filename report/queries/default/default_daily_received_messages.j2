@@ -1,0 +1,25 @@
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{ start_date }}",
+              "lte": "{{ end_date }}"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "unique_sources": {
+      "cardinality": {
+        "field": "{{ source_field }}"
+      }
+    }
+  }
+}

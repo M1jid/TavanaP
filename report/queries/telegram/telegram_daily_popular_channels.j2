@@ -1,0 +1,33 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": [
+        { "match_phrase": { "TYPE": "CHANNELPOST" } },
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{ start_date }}",
+              "lte": "{{ end_date }}"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "top_channels": {
+      "terms": {
+        "field": "PEER_ID",
+        "size": 20,
+        "order": { "total_views": "desc" }
+      },
+      "aggs": {
+        "total_forwards":  { "sum": { "field": "FORWARDS_COUNT" } },
+        "total_views":     { "sum": { "field": "VIEWS_COUNT" } },
+        "total_replies":   { "sum": { "field": "REPLIES_COUNT" } },
+        "total_reactions": { "sum": { "field": "REACTIONS_COUNT" } }
+      }
+    }
+  }
+}

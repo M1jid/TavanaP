@@ -1,0 +1,18 @@
+services:
+
+  rss:
+    build: .
+    container_name: rss
+    image: rss
+    networks:
+      - app-network
+    volumes:
+      - ../.env:/code/.env
+      - ../utils:/code/utils
+      - ../certs:/certs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  app-network:
+    driver: bridge

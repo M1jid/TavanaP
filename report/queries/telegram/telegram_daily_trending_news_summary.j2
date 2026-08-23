@@ -1,0 +1,21 @@
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "must": [
+        { "range": { "DATE": { "gte": "{{ start_date }}", "lte": "{{ end_date }}" }}}
+      ]
+    }
+  },
+  "aggs": {
+    "top_posts": {
+      "top_hits": {
+        "sort": [
+          { "VIEWS_COUNT": { "order": "desc" }}
+        ],
+        "size": 20
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+services:
+  telegram:
+    build: .
+    image: telegram
+    restart: unless-stopped
+    volumes:
+      - ../utils:/code/utils
+      - ../models:/code/models
+      - ../metadata:/code/metadata
+      - ../.env:/code/.env
+    environment:
+      - MODE=PRODUCTION
+    networks:
+      - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  app-network:
+    driver: bridge

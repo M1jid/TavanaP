@@ -1,0 +1,48 @@
+{
+  "size": "{{ size }}",
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "taken_at": {
+              "gte": "{{ start_date }}",
+              "lte": "{{ end_date }}"
+            }
+          }
+        },
+        {
+          "exists": { "field": "like_count" }
+        }
+      ]
+    }
+  },
+  "sort": [
+    { "like_count": { "order": "desc" } }
+  ],
+  "aggs": {
+    "sentimentBreakdown": {
+      "terms": {
+        "field": "SENTIMENT.keyword",
+        "size": 10
+      }
+    },
+    "senseBreakdown": {
+      "terms": {
+        "field": "SENSE.keyword",
+        "size": 15
+      }
+    },
+    "tagsBreakdown": {
+      "terms": {
+        "field": "TAGS.keyword",
+        "size": 15
+      }
+    },
+    "totalLikes": {
+      "sum": {
+        "field": "like_count"
+      }
+    }
+  }
+}

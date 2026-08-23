@@ -1,0 +1,17 @@
+{
+    "size": 0,
+    "track_total_hits": true,
+    "query": {
+        "match_phrase": {
+          "AUTHOR_ID": {{ user_id }}
+        }
+    },
+    "aggs": {
+      "PEER_ID": {
+        "terms": {
+            "field": "PEER_ID",
+            "size": 10
+        }
+      }
+    }
+}

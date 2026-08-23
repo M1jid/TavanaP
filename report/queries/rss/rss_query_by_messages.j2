@@ -1,0 +1,50 @@
+{
+  "size": "{{size}}",
+  "from": "{{page}}",
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [ 
+        { 
+          "range": { 
+            "DATE": { 
+              "gte": "{{start_date}}", 
+              "lte": "{{end_date}}" 
+            } 
+          } 
+        } 
+      ],
+      "should": [
+        {% set groups = [must|length, should|length, must_not|length] | max %}
+        {% for i in range(groups) %}
+        {
+          "bool": {
+            "must": [
+              {% for term in must[i] %}
+              { "multi_match": { "query": "{{ term }}", "type": "phrase", "fields": ["TITLE", "SUMMARY"] } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ],
+            "should": [
+              {% for term in should[i] %}
+              { "multi_match": { "query": "{{ term }}", "type": "phrase", "fields": ["TITLE", "SUMMARY"] } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ],
+            {% if should[i]|length > 0 %}
+            "minimum_should_match": 1,
+            {% endif %}
+            "must_not": [
+              {% for term in must_not[i] %}
+              { "multi_match": { "query": "{{ term }}", "type": "phrase", "fields": ["TITLE", "SUMMARY"] } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ]
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "sort": [
+    { "DATE": { "order": "desc" } }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "size": "{{size}}",
+  "from": "{{page}}",
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "post.taken_at": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        }
+      ],
+      "should": [
+        {% set groups = [must|length, should|length, must_not|length] | max %}
+        {% for i in range(groups) %}
+        {
+          "bool": {
+            "must": [
+              {% for term in must[i] %}
+              { "match_phrase": { "post.caption": "{{ term }}" } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ],
+            "should": [
+              {% for term in should[i] %}
+              { "match_phrase": { "post.caption": "{{ term }}" } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ]
+            {% if should[i]|length > 0 %},
+            "minimum_should_match": 1
+            {% endif %},
+            "must_not": [
+              {% for term in must_not[i] %}
+              { "match_phrase": { "post.caption": "{{ term }}" } }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ]
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "aggs": {
+    "history": {
+      "date_histogram": {
+        "field": "post.taken_at",
+        "calendar_interval": "day"
+      }
+    },
+    "sentiment": { "terms": { "field": "analysis.SENTIMENT.keyword", "size": 3 } },
+    "sense": { "terms": { "field": "analysis.SENSE.keyword", "size": 10 } },
+    "likes": { "sum": { "field": "post.like_count" } },
+    "comments": { "sum": { "field": "post.comment_count" } },
+    "views": { "sum": { "field": "post.views_count" } },
+    "unique_accounts": { "cardinality": { "field": "owner.username.keyword" } },
+    "hours": {
+      "terms": {
+        "script": { "source": "doc['post.taken_at'].value.getHour()" },
+        "size": 24,
+        "order": { "_key": "asc" }
+      }
+    },
+    "hashtags": { "terms": { "field": "post.hashtags.keyword", "size": 50 } },
+    "mentions": { "terms": { "field": "post.mentions.keyword", "size": 50 } },
+    "locations": { "terms": { "field": "post.location.keyword", "size": 50 } }
+  },
+  "_source": [
+    "post.id",
+    "post.url",
+    "post.caption",
+    "post.clean_caption",
+    "post.like_count",
+    "post.comment_count",
+    "post.views_count",
+    "post.final_photo_url",
+    "post.hashtags",
+    "post.mentions",
+    "post.location",
+    "post.taken_at",
+    "owner.username",
+    "owner.owner_id",
+    "owner.owner_profile_pic_url",
+    "analysis.SENTIMENT",
+    "analysis.SENSE",
+    "analysis.TAGS"
+  ],
+  "sort": [
+    { "post.taken_at": { "order": "desc" } }
+  ]
+}
+
+
+

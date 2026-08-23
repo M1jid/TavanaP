@@ -1,0 +1,20 @@
+{
+  "track_total_hits": true,
+  "size": 10000,
+  "_source": ["CLEANED_MESSAGE"],
+  "query": {
+    "bool": {
+      "must": [
+        { "match_phrase": { "AUTHOR_ID": "{{ user_id }}" } },
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{ start_date }}",
+              "lte": "{{ end_date }}"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

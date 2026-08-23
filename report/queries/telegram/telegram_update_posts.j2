@@ -1,0 +1,38 @@
+{
+  "size": {{size}},
+  "track_total_hits": true,
+  "_source": ["PEER_ID", "MESSAGE_ID"],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_phrase": {
+            "TYPE": "CHANNELPOST"
+          }
+        },
+        {
+          "match_phrase": {
+            "CLEANED_MESSAGE": "{{search_text}}"
+          }
+        }
+      ],
+      "filter": [
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        },
+        {
+          "range": {
+            "FETCH_TIME": {
+              "lte": "{{timestamp}}"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

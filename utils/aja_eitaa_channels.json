@@ -1,0 +1,210 @@
+{
+    "https://eitaa.com/family_artesh": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 3116
+    },
+    "https://eitaa.com/ai_studies": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 2485
+    },
+    "https://eitaa.com/moojmedia": {
+        "tag": "نیروی دریایی",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["سیستان و بلوچستان"],
+        "subscribers": 2253
+    },
+    "https://eitaa.com/arteshyaran_vatan": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["همدان"],
+        "subscribers": 2883
+    },
+    "https://eitaa.com/ghavanin_aja": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 5326
+    },
+    "https://eitaa.com/afmedia99": {
+        "tag": "نیروی هوایی",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 212
+    },
+    "https://eitaa.com/arioberzenpodcast": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 143
+    },
+    "https://eitaa.com/safe_world": {
+        "tag": "عقیدتی سیاسی",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 4213
+    },
+    "https://eitaa.com/hamsar_hamsangar": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["فارس"],
+        "subscribers": 3408
+    },
+    "https://eitaa.com/bazneshasteh_news": {
+        "tag": "آجا",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["اصفهان"],
+        "subscribers": 9393
+    },
+    "https://eitaa.com/hamian_nezaja": {
+        "tag": "نیروی زمینی",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["تهران"],
+        "subscribers": 1872
+    },
+    "https://eitaa.com/jahadi_org": {
+        "tag": "نیروی پدافند",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["بوشهر"],
+        "subscribers": 161
+    },
+    "https://eitaa.com/nopadidshiraz63": {
+        "tag": "نیروی پدافند",
+        "admin": {
+            "1": { 
+                "name": "**** ******",
+                "national_id": "1234567890",
+                "phone": "+989123456789",
+                "account_email": "ahmadi@example.com",
+                "account_phone": "+989123456789",
+                "address": "تهران، خیابان آزادی، پلاک 123",
+                "isCreator": 0
+            }
+        },
+        "city": ["فارس"],
+        "subscribers": 216
+    }
+}

@@ -1,0 +1,44 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        { "match_phrase": { "TYPE": "CHANNELPOST" } },
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "top_tags": {
+      "terms": {
+        "field": "TAGS.keyword",
+        "size": 5,
+        "order": { "_count": "desc" },
+        "exclude": {{ exclude_tags | tojson }}
+      },
+      "aggs": {
+        "top_post": {
+          "top_hits": {
+            "size": 1,
+            "sort": [ { "VIEWS_COUNT": { "order": "desc" } } ],
+            "_source": [
+              "MESSAGE",
+              "PUBLIC_URL",
+              "PEER_ID",
+              "DATE",
+              "TAGS",
+              "VIEWS_COUNT"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

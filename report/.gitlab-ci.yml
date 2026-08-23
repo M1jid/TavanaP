@@ -1,0 +1,107 @@
+# GitLab CI configuration for Report Data API
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  PYTHON_VERSION: "3.11"
+
+# Test stage
+test_routes:
+  stage: test
+  image: python:${PYTHON_VERSION}-slim
+  before_script:
+    - apt-get update && apt-get install -y gcc
+    - pip install --upgrade pip
+    - pip install -r test_requirements.txt
+    - pip install -r requirements.txt  # Install main dependencies
+  script:
+    - echo "🧪 Running route tests..."
+    - python test_routes_simple.py
+  artifacts:
+    reports:
+      junit: test-results.xml
+    paths:
+      - test-results.xml
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+    - merge_requests
+
+# Alternative test with pytest
+test_routes_pytest:
+  stage: test
+  image: python:${PYTHON_VERSION}-slim
+  before_script:
+    - apt-get update && apt-get install -y gcc
+    - pip install --upgrade pip
+    - pip install -r test_requirements.txt
+    - pip install -r requirements.txt
+  script:
+    - echo "🧪 Running pytest route tests..."
+    - pytest test_routes_simple.py -v --tb=short
+  artifacts:
+    reports:
+      junit: pytest-results.xml
+    paths:
+      - pytest-results.xml
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+    - merge_requests
+  allow_failure: true  # Allow this to fail without failing the pipeline
+
+# Build stage (example)
+build:
+  stage: build
+  image: python:${PYTHON_VERSION}-slim
+  before_script:
+    - apt-get update && apt-get install -y gcc
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+  script:
+    - echo "🏗️ Building application..."
+    - python -m py_compile main.py
+    - python -m py_compile app/factory.py
+  only:
+    - main
+    - develop
+    - tags
+
+# Deploy stage (example - customize based on your deployment)
+deploy_staging:
+  stage: deploy
+  image: python:${PYTHON_VERSION}-slim
+  before_script:
+    - apt-get update && apt-get install -y gcc
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+  script:
+    - echo "🚀 Deploying to staging..."
+    # Add your deployment commands here
+  environment:
+    name: staging
+    url: https://staging.your-domain.com
+  only:
+    - develop
+  when: manual
+
+deploy_production:
+  stage: deploy
+  image: python:${PYTHON_VERSION}-slim
+  before_script:
+    - apt-get update && apt-get install -y gcc
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+  script:
+    - echo "🚀 Deploying to production..."
+    # Add your deployment commands here
+  environment:
+    name: production
+    url: https://your-domain.com
+  only:
+    - main
+  when: manual

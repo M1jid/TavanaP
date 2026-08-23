@@ -1,0 +1,61 @@
+{
+  "size": "{{size}}",
+  "from": "{{page}}",
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "DATE": {
+              "gte": "{{start_date}}",
+              "lte": "{{end_date}}"
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "MESSAGE": "{{search_text}}"
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "trends": {
+      "terms": {
+        "field": "TAGS.keyword",
+        "size": 10
+      },
+      "aggs": {
+        "top_messages": {
+          "top_hits": {
+            "size": 12,
+            "sort": [
+              {
+                "_script": {
+                  "type": "number",
+                  "script": {
+                    "lang": "painless",
+                    "source": "doc['VIEWS_COUNT'].value + doc['FORWARDS_COUNT'].value"
+                  },
+                  "order": "desc"
+                }
+              }
+            ]
+          }
+        },
+        "history": {"date_histogram": {"field": "DATE","calendar_interval": "day"},"aggs": {"REACTIONS": {"terms": {"field": "REACTIONS.emoji.keyword","size": 20}}}},
+        "sentiment": {"terms": {"field": "SENTIMENT.keyword","size": 3}},
+        "sense": {"terms": {"field": "SENSE.keyword","size": 10}},
+        "reactions": {"sum": {"field": "REACTIONS_COUNT"}},
+        "comments": {"sum": {"field": "REPLIES_COUNT"}},
+        "forwards": {"sum": {"field": "FORWARDS_COUNT"}},
+        "views": {"sum": {"field": "VIEWS_COUNT"}},
+        "unique_channels": {"cardinality": {"field": "PEER_ID"}},
+        "reactionsBreakdown": {"terms": {"field": "REACTIONS.emoji.keyword", "size": 20}},
+        "hours": {"terms": {"script": {"source": "doc['DATE'].value.getHour()"}, "size": 24, "order": { "_key": "asc" }}}
+      }
+    }
+  }
+}

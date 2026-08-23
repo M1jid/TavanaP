@@ -1,0 +1,5 @@
+playwright==1.44.0
+kafka-python==2.0.2
+elasticsearch==8.13.0
+nats-py==2.11.0
+
